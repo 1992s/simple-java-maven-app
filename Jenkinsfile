@@ -17,6 +17,8 @@ pipeline {
         stage('deploy') {
           steps {
             echo 'deploy'
+            sh '''#bin/bash!
+java -jar '''
           }
         }
       }
