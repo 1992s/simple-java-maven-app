@@ -8,8 +8,17 @@ pipeline {
   }
   stages {
     stage('Build') {
-      steps {
-        sh 'mvn -B -DskipTests clean package'
+      parallel {
+        stage('Build') {
+          steps {
+            sh 'mvn -B -DskipTests clean package'
+          }
+        }
+        stage('deploy') {
+          steps {
+            echo 'deploy'
+          }
+        }
       }
     }
   }
